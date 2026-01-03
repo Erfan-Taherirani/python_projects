@@ -22,7 +22,7 @@ conda create -n monty_hall python=3.12
 run the code below in your command window:
 
 ```bash
-pip install requirements.txt
+pip install -r requirements.txt
 ```
 
 ## Usage
