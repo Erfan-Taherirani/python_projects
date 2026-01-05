@@ -58,3 +58,43 @@ class ContactBook:
             print("---------------------------------")
         else:
             print(f"There is no {name}")
+
+
+# User Interface
+if __name__ == "__main__":
+    print("Welcome to the contact book. Use one the below features: (Enter the Number)")
+    print("1. Add Contact")
+    print("2. Show Contacts")
+    print("3. Edit Contact")
+    print("4. Delete Contact")
+    print("5. Search a contact")
+
+    contact_book = ContactBook()
+
+    user_selected_feature = input("Please Select a Feature Number:")
+    if user_selected_feature == 1:
+        name = input("Name: ")
+        email = input("Email: ")
+        phone_number = input("Phone Number: ")
+        address = input("address: ")
+        contact_book.create(name=name,
+                            email=email,
+                            phone_number=phone_number,
+                            physical_address=address
+        )
+
+    elif user_selected_feature == 2:
+        contact_book.show()
+
+    elif user_selected_feature == 3:
+        name = input("Enter the contact's name you want to edit: ")
+        new_name = input("New Name: ")
+        email = input("New Email: ")
+        phone_number = input("New Phone Number: ")
+        address = input("New Address: ")
+        contact_book.edit(name=name,
+                          new_name=new_name,
+                          email=email,
+                          phone_number=phone_number,
+                          physical_address=address
+    )
