@@ -1,26 +1,38 @@
-from collections import defaultdict
+import utils.contact_book
 
+if __name__ == "__main__":
+    print("Welcome to the contact book application.")
+    cbook = utils.contact_book.ContactBook()
 
-class ContactBook:
-    def __init__(self):
-        self.contacts = defaultdict()
+    while True:
+        print("\n1. Add Contact")
+        print("2. List of Contacts")
+        print("3. Update Contact")
+        print("4. Delete Contact")
+        print("5. Quit")
 
-    def add_contact(self, name, phone, email, address):
-        if name not in self.contacts:
-            self.contacts[name] = {
-                "phone": phone,
-                "email": email,
-                "address": address
-            }
-            
-        else:
-            print("Contact Already Exists!")
+        user_input = input("Enter the feature number: ")
 
-    def list_contacts(self):
-        print("\n\nList of Contacts:")
-        for name, info in self.contacts.items():
-            print("-" * 20)
-            print(f"Name: {name}")
-            print(f"Phone: {info['phone']}")
-            print(f"Email: {info['email']}")
-            print(f"Address: {info['address']}")
+        if user_input == "5":
+            break
+
+        elif user_input == "1":
+            name = input("Enter name: ")
+            phone = input("Enter phone: ")
+            email = input("Enter email: ")
+            address = input("Enter address: ")
+            cbook.add_contact(
+                name=name, phone=phone,
+                email=email, address=address
+            )
+
+        elif user_input == "2":
+            cbook.list_contacts()
+            while True:
+                contact_list_user_input = input(
+                    "Press ok to continue\n"
+                )
+                if contact_list_user_input.lower() == "ok":
+                    break
+                else:
+                    pass
