@@ -1,26 +1,28 @@
 import utils.contact_book
+from rich import print as rprint
+
 
 if __name__ == "__main__":
-    print("Welcome to the contact book application.")
+    rprint("[white on cyan bold]Welcome to the contact book application.")
     cbook = utils.contact_book.ContactBook()
 
     while True:
-        print("\n1. Add Contact")
-        print("2. List of Contacts")
-        print("3. Update Contact")
-        print("4. Delete Contact")
-        print("5. Quit")
+        rprint("[bold]\n1. Add Contact")
+        rprint("[bold]2. List of Contacts")
+        rprint("[bold]3. Update Contact")
+        rprint("[bold]4. Delete Contact")
+        rprint("[bold]5. Quit")
 
-        user_input = input("Enter the feature number: ")
+        user_input = input("\nEnter the feature number: ").strip()
 
         if user_input == "5":
             break
 
         elif user_input == "1":
-            name = input("Enter name: ")
-            phone = input("Enter phone: ")
-            email = input("Enter email: ")
-            address = input("Enter address: ")
+            name = input("Enter name: ").strip()
+            phone = input("Enter phone: ").strip()
+            email = input("Enter email: ").strip()
+            address = input("Enter address: ").strip()
             cbook.add_contact(
                 name=name, phone=phone,
                 email=email, address=address
@@ -29,10 +31,28 @@ if __name__ == "__main__":
         elif user_input == "2":
             cbook.list_contacts()
             while True:
+                print("-" * 20)
                 contact_list_user_input = input(
-                    "Press ok to continue\n"
+                    "Press any key to continue\n"
                 )
-                if contact_list_user_input.lower() == "ok":
-                    break
-                else:
-                    pass
+                break
+
+        elif user_input == "3":
+            print("-" * 20)
+            print("Press enter if you don't want to change an element")
+            print("Press space to empty an element")
+            print("-" * 20)
+            name = input("Enter Name: ").strip()
+            phone = input("Enter Phone: ")
+            email = input("Enter Email: ")
+            address = input("Enter address: ")
+            cbook.update_contact(
+                name=name,
+                phone=phone,
+                email=email,
+                address=address
+            )
+
+        elif user_input == "4":
+            name = input("Enter Name: ").strip()
+            cbook.delete_contact(name=name)

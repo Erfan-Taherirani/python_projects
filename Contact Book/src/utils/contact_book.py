@@ -1,3 +1,7 @@
+from tabulate import tabulate
+from rich import print as rprint
+
+
 class ContactBook:
     def __init__(self):
         self.contacts = {}
@@ -9,37 +13,39 @@ class ContactBook:
                 "email": email,
                 "address": address
             }
-            print("Contact Created.")
+            rprint("[red bold]Contact Created.")
             
         else:
-            print("Contact Already Exists!")
+            rprint("[red bold]Contact Already Exists!")
 
     def list_contacts(self):
-        print("\n\nList of Contacts:")
+        rprint("\n\n[blue bold]List of Contacts:")
+        table = [["Name", "Phone Number", "Email", "Address"]]
         for name, info in self.contacts.items():
-            print("-" * 20)
-            print(f"Name: {name}")
-            print(f"Phone: {info['phone']}")
-            print(f"Email: {info['email']}")
-            print(f"Address: {info['address']}")
+            table.append([name, info['phone'], info['email'], info['address']])
+
+        print(tabulate(tabular_data=table, headers="firstrow", tablefmt="pretty"))
 
     def update_contact(self, name, phone=None, email=None, address=None):
-        if name in self.contacts:
-            if phone or (phone == ""):
-                self.contacts[name]['phone'] = phone
-                print("Phone Updated!")
-
-            if email or (email == ""):
-                self.contacts[name]['email'] = email
-                print("Email Updated!")
-
-            if address or (address == ""):
-                self.contacts[name]['address'] = address
-                print("Address Updated!")
-
+        if name not in self.contacts:
+            rprint("[red bold]Contact not found!")
         else:
-            print("Contact not found!")
+            if phone:
+                self.contacts[name]['phone'] = phone
+
+            if email:
+                self.contacts[name]['email'] = email
+
+            if address:
+                self.contacts[name]['address'] = address
+
+            rprint("[red bold]Conract Updated!")
 
     def delete_contact(self, name):
-            del self.contacts[name]
-            print("Contact Deleted!")
+            if name in self.contacts:
+                del self.contacts[name]
+                rprint("[red bold]Contact Deleted!")
+            else:
+                rprint("[red bold]Contact not found!")
+
+# TODO: add search method
