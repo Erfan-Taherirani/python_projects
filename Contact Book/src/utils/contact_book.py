@@ -78,4 +78,16 @@ class ContactBook:
                 
         else:
             rprint("[red bold]Contact not found!")
-# TODO: add search method
+
+    def search_contact(self, name: str) -> None:
+        """This method searchs for a contact in the contacts.
+
+        :param name: Name of the contact
+        """
+        if name in self.contacts:
+            rprint(f"[green bold]{name}")
+            print(f"    Phone: {self.contacts[name]['phone']}")
+            print(f"    Email: {self.contacts[name]['email']}")
+            print(f"    Address: {self.contacts[name]['address']}")
+        else:
+            rprint("[red bold]Contact not found!")

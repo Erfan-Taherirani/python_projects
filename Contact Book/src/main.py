@@ -11,11 +11,12 @@ if __name__ == "__main__":
         rprint("[bold]2. List of Contacts")
         rprint("[bold]3. Update Contact")
         rprint("[bold]4. Delete Contact")
-        rprint("[bold]5. Quit")
+        rprint("[bold]5. Search Contact")
+        rprint("[bold]6. Quit")
 
         user_input = input("\nEnter the feature number: ").strip()
 
-        if user_input == "5":
+        if user_input == "6":
             break
 
         elif user_input == "1":
@@ -31,16 +32,12 @@ if __name__ == "__main__":
         elif user_input == "2":
             cbook.list_contacts()
             while True:
-                print("-" * 20)
                 contact_list_user_input = input(
-                    "Press any key to continue\n"
+                    "Press any key to continue"
                 )
                 break
 
         elif user_input == "3":
-            print("-" * 20)
-            print("Press enter if you don't want to change an element")
-            print("Press space to empty an element")
             print("-" * 20)
             name = input("Enter Name: ").strip()
             phone = input("Enter Phone: ")
@@ -56,3 +53,14 @@ if __name__ == "__main__":
         elif user_input == "4":
             name = input("Enter Name: ").strip()
             cbook.delete_contact(name=name)
+
+        elif user_input == "5":
+            name = input("Enter Name: ")
+            while True:
+                print("-" * 20)
+                cbook.search_contact(name=name)
+                print("-" * 20)
+                contact_list_user_input = input(
+                    "Press any key to continue"
+                )
+                break
