@@ -45,8 +45,8 @@ This project focuses on **engineering fundamentals** such as performance optimiz
 
 1️⃣ Clone the Repository and Go to the Project Folder:
 ```bash
-git clone TODO
-cd TODO
+git clone https://github.com/Erfan-Taherirani/python_projects.git
+cd "Currency Convertor"
 ```
 
 2️⃣ Install the Requirements:
